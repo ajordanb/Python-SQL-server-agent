@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 
 
 def connect_to_db():
-    '''Connects to DB server using mssql and pymssql'''
+    """Connects to DB server using mssql and pymssql"""
     driver = 'SQL Server Native Client 11.0' # Can change to other drivers
     user = '<username>'
     db = "<database>"
@@ -20,10 +20,14 @@ def connect_to_db():
 
 
 def get_data(query:str) -> list[dict]:
-    '''Executes a query agains the DB and return results in a list of dictionaries'''
+    """Executes a query agains the DB and return results in a list of dictionaries"""
     cursor = connect_to_db()
     cursor.execute(query)
     results = []
+    """This loop will handle datetime stamps and decimal serialization.
+        IMPORTANT: This is transforming Decimal to String. 
+        You may change it to integers or floats if you need to.
+    """
     for row in cursor.fetchall():
         result = {}
         for i, column in enumerate(cursor.description):
@@ -35,7 +39,6 @@ def get_data(query:str) -> list[dict]:
                 result[column[0]] = row[i]
         results.append(result)
     return results # If JSON is needed change to json.dumps(result)
-
 
 
 
