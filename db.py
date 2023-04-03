@@ -1,10 +1,8 @@
 import json
-import pandas as pd
 from datetime import datetime
 from decimal import Decimal
 from sqlalchemy import create_engine
-from dotenv import load_dotenv
-load_dotenv()
+
 
 def connect_to_db():
     '''Connects to DB server using mssql and pymssql'''
