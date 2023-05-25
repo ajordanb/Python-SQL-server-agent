@@ -2,15 +2,15 @@ import json
 from datetime import datetime
 from decimal import Decimal
 from sqlalchemy import create_engine
-
+from config import settings
 
 def connect_to_db():
     """Connects to DB server using mssql and pymssql"""
     driver = 'SQL Server Native Client 11.0' # Can change to other drivers
-    user = '<username>'
-    db = "<database>"
-    server = "<server>"
-    password = '<>password'
+    user = settings.database_username
+    db = settings.database_name
+    server = settings.database_host
+    password = settings.database_password
     connection_string = f'mssql+pymssql://{user}:{password}@{server}/{db}'
     engine = create_engine(connection_string)
     connection = engine.connect()
