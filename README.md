@@ -1,5 +1,5 @@
 ## Python SQL Server Agent Template
-This is a pretty small, yet powerful script. There are many more features that can and should be added, but as is it allows you to run queries agains a SQL Server Database and to define a schedule to do so. 
+It allows you to run queries on a SQL Server Database and to define a schedule to do so. 
 
 ## To install 
 `pip install -r requirements.txt`
